@@ -30,8 +30,7 @@ public class RitualServiceImpl implements RitualService {
 
 	@Override
 	public Ritual createRitual(Ritual ritual) {
-		repo.saveAndFlush(ritual);
-		return ritual;
+		return repo.saveAndFlush(ritual);
 	}
 
 	public Ritual updateRitual(int id, Ritual ritual) {
@@ -62,6 +61,12 @@ public class RitualServiceImpl implements RitualService {
 			deleted = true;
 		}
 		return false;
+	}
+	
+	@Override
+	public List<Ritual> findByKeyword(String keyword) {
+		keyword = "%" + keyword + "%";
+		return repo.findByNameIgnoreCaseLikeOrPropertiesIgnoreCaseLikeOrIntentionsIgnoreCaseLikeOrWordsIgnoreCaseLikeOrIngredientsIgnoreCaseLikeOrInstructionsIgnoreCaseLikeOrIdealtimeIgnoreCaseLike(keyword, keyword, keyword, keyword, keyword, keyword, keyword);
 	}
 	
 }

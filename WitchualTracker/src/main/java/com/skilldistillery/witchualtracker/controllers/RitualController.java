@@ -37,13 +37,19 @@ public class RitualController {
 	}
 	
 	@PostMapping("ritual")
-	public Ritual createRitual(@RequestBody Ritual ritual) {
-		ritual = ritualServ.createRitual(ritual);
+	public Ritual createRitual(@RequestBody Ritual ritual, HttpServletResponse res) {
+		Ritual add = null;
+		add = ritualServ.createRitual((ritual));
+		if(add == null) {
+			res.setStatus(404);
+		} else {
+			res.setStatus(201);
+		}
 		return ritual;
 	}
 	
 	@PutMapping("ritual/{id}")
-	public Ritual updateRitual(@PathVariable int id, @RequestBody Ritual ritual) {
+	public Ritual updateRitual(@PathVariable int id, @RequestBody Ritual ritual, HttpServletResponse res) {
 		ritual = ritualServ.updateRitual(id, ritual);
 		return ritual;
 	}
@@ -55,5 +61,10 @@ public class RitualController {
 		}else {
 			res.setStatus(404);
 		}
+	}
+	
+	@GetMapping("ritual/{keyword}")
+	public List<Ritual> findByKeyword(@PathVariable String keyword) {
+		return ritualServ.findByKeyword(keyword);
 	}
 }

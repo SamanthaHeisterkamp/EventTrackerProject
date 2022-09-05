@@ -16,4 +16,6 @@ public interface RitualService {
 	
 	boolean deleteById(int id);
 	
+	List<Ritual> findByKeyword(String keyword);
+	
 }
