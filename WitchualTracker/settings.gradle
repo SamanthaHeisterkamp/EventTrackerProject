@@ -1,0 +1,3 @@
+rootProject.name = 'WitchualTracker'
+
+includeFlat 'WitchualTrackerJPA'
