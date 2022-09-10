@@ -36,9 +36,9 @@ public class RitualServiceImpl implements RitualService {
 	public Ritual updateRitual(int id, Ritual ritual) {
 		Ritual updateRitual = new Ritual();
 		Optional<Ritual> ritualOpt = repo.findById(id);
-		
+		if (ritualOpt.isPresent()) {
 		updateRitual = ritualOpt.get();
-		
+		}
 		updateRitual.setName(ritual.getName());
 		updateRitual.setProperties(ritual.getProperties());
 		updateRitual.setIntentions(ritual.getIntentions());

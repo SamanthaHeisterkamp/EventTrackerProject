@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Witchual</title>
+<script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+
+	<h1>Welcome to Witchual</h1>
+	<div id='ritualList'></div>
+	<br>
+	<br>
+	
+	<form name="ritualForm">
+	<input type="number" name="id">
+	<button name="findById">Find Ritual By Id</button>
+	</form>
+	
+	<br>
+	<br>
+	
+	
+	<div id="ritualData"></div>
+
+	<form name="createRitualForm" id="createRitualForm">
+		Ritual: <input type="text" name="name"><br> 
+		Properties<input type="text" name="properties"><br> 
+		Intentions: <input type="text" name="intentions"><br> 
+		Ingredients: <input type="text" name="ingredients"><br> 
+		Incantation: <input type="text" name="words"><br> 
+		Instructions: <input type="text" name="instructions"><br> 
+		Ideal Time: <input type="text" name="idealtime"><br>
+			
+			<button name="createRitual">Create</button>
+	</form>
+
+<br>
+<br>
+
+	<form name="deleteById">
+		<input type="text" name="id">
+		<button name="delete">Delete Ritual by ID</button>
+	</form>
+
+<br>
+<br>
+
+	<form name="updateRitualForm" id="updateRitualForm">
+		Id: <input type="text" name="id"><br>
+		Ritual: <input type="text" name="name"><br> 
+		Properties<input type="text" name="properties"><br> 
+		Intentions: <input type="text" name="intentions"><br> 
+		Ingredients: <input type="text" name="ingredients"><br> 
+		Incantation: <input type="text" name="words"><br> 
+		Instructions: <input type="text" name="instructions"><br> 
+		Ideal Time: <input type="text" name="idealtime"><br>
+			
+			<button name="submit">Update</button>
+	</form>
+	
+</body>
+</html>
