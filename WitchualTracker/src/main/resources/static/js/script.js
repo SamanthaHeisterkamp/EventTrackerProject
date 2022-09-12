@@ -4,8 +4,6 @@ window.addEventListener('load', function(evt) {
 });
 
 function init() {
-	//TODO:
-	//Event handlers for buttons and stuff
 	loadAllRituals();
 	
 	
@@ -42,6 +40,14 @@ function init() {
             getRitual(id);
         }
     });
+    
+    	document.findAll.findAll.addEventListener('click', (e) => {
+		let dataDiv = document.getElementById('ritualData');
+		dataDiv.textContent = '';
+		e.preventDefault();
+		findAllRituals();
+
+	});
 
 }
 
@@ -66,16 +72,50 @@ function loadAllRituals() {
 
 
 function displayEvents(ritualList) {
-	let dataDiv = document.getElementById("ritualList");
-	dataDiv.textContent = '';
-	let ul = document.createElement('ul');
-	dataDiv.appendChild(ul);
+		let tbody = document.querySelector('#ritualList>table>tbody');
+	tbody.textContent = '';
 	for (let ritual of ritualList) {
-		let li = document.createElement('li');
-		li.textContent = ritual.name;
-		ul.appendChild(li);
+		let tr = document.createElement('tr');
+		tbody.appendChild(tr);
+		
+		let td = document.createElement('td');
+		td.textContent = ritual.id;
+		tr.appendChild(td);
+		
+		td = document.createElement('td');
+		td.textContent = ritual.name;
+		tr.appendChild(td);
+		
+		td = document.createElement('td');
+		td.textContent = ritual.properties;
+		tr.appendChild(td);
+		
+		td = document.createElement('td');
+		td.textContent = ritual.intentions;
+		tr.appendChild(td);
+		
+		td = document.createElement('td');
+		td.textContent = ritual.ingredients;
+		tr.appendChild(td);
+		
+		td = document.createElement('td');
+		td.textContent = ritual.words;
+		tr.appendChild(td);
+		
+		td = document.createElement('td');
+		td.textContent = ritual.instructions;
+		tr.appendChild(td);
+		
+		td = document.createElement('td');
+		td.textContent = ritual.idealtime;
+		tr.appendChild(td);
+		
+		
+		tr.addEventListener('click', function(evt){
+			console.log('Selected Ritual ' + ritual.id);
+		});
 	}
-	}
+}
 
 
 	function displayRitual(ritual) {
@@ -225,4 +265,27 @@ function getRitual(id) {
     xhr.send();
 }
 
+	function findAllRituals() {
+		console.log("index function hit")
+		let xhr = new XMLHttpRequest();
+		xhr.open('GET', 'api/rituals')
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState === 4) {
+				if (xhr.status === 200) {
+					let rituals = JSON.parse(xhr.responseText);
+					console.log(rituals)
+					displayEvents(rituals);
+
+				} else {
+					console.log("Rituals Not Found")
+					let dataDiv = document.getElementById('ritualData');
+					dataDiv.textContent = '';
+					let notFoundDiv = document.createElement('div');
+					notFoundDiv.textContent = "Ritual not found. . ."
+					dataDiv.appendChild(notFoundDiv);
+				}
+			};
+		}
+		xhr.send();
+	}
 
