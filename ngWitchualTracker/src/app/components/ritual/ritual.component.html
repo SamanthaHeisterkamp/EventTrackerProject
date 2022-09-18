@@ -1,0 +1,56 @@
+<h1>{{title}} <span class="badge" [ngClass]="getBadgeColor()">{{getNumOfRituals()}}</span>  </h1>
+
+
+<div *ngIf="!selected">
+<table class="table table-striped table-hover">
+ <thead class="table-dark">
+  <tr>
+    <th>Name</th>
+    <th>Properties</th>
+    <th>Intentions</th>
+    <th>Delete</th>
+  </tr>
+</thead>
+  <tbody>
+    <tr *ngFor="let ritual of rituals" >
+      <td (click)="displayRitual(ritual)">{{ritual.name}}</td>
+      <td (click)="displayRitual(ritual)">{{ritual.properties}}</td>
+      <td (click)="displayRitual(ritual)">{{ritual.intentions}}</td>
+        <td><Button class="btn btn-danger" (click)="deleteRitual(ritual.id)">X</Button></td>
+    </tr>
+  </tbody>
+</table>
+<form>
+  <input type="text" name="ritual" [(ngModel)]="newRitual.name">
+  <button (click)="addRitual()">Add Ritual</button>
+</form>
+</div>
+
+
+<div *ngIf="selected && !editRitual">
+
+  <p>{{selected.id}}</p>
+  <p>{{selected.name}}</p>
+  <p>{{selected.properties}}</p>
+  <p>{{selected.intentions}}</p>
+  <p>{{selected.ingredients}}</p>
+  <p>{{selected.words}}</p>
+  <p>{{selected.instructions}}</p>
+  <p>{{selected.idealtime}}</p>
+  <button (click)="displayTable()" class="btn btn-outline-danger btn-sm">Back</button>
+  <button (click)="setEditRitual()" class="btn btn-outline-success btn-sm">Edit</button>
+</div>
+
+<form *ngIf="editRitual">
+  Name: <input type="text" name="name" [(ngModel)]="editRitual.name"> <br>
+  Properties: <input type="text" name="properties" [(ngModel)]="editRitual.properties"> <br>
+  Intentions: <input type="text" name="intentions" [(ngModel)]="editRitual.intentions"> <br>
+  Ingredients: <input type="text" name="ingredients" [(ngModel)]="editRitual.ingredients"> <br>
+  Incantation: <input type="text" name="words" [(ngModel)]="editRitual.words"> <br>
+  Instructions: <input type="text" name="instructions" [(ngModel)]="editRitual.instructions"> <br>
+  Ideal Time: <input type="text" name="idealtime" [(ngModel)]="editRitual.idealtime"> <br>
+
+  <button (click)="editRitual = null">Cancel</button>
+  <button (click)="updateRitual(editRitual)">Save</button>
+</form>
+
