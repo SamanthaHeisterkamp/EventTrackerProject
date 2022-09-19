@@ -1,2 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+
+body {   background-color: black;
+
+}
+.header-img {
+  width: 100%;
+  height: 400px;
+  background: url('https://garden.spoonflower.com/c/10848535/p/f/l/2ta67U6tYTQOJ7URcnPgmwUBOx2KtjWU8RA-jjAzPLCnXXI8w_pvIPsu9g/Occult%20aesthetic.%20Witchy%20Hands.jpg');
+  background-size: cover;
+
+}
+
+.overlay {
+  text-align: center;
+  color: whitesmoke;
+text-transform: capitalize;
+-webkit-text-size-adjust: auto;
+font-size: 450%;
+padding: 50px;
+}
+
+.form {
+  align-items: center;
+}
+
+.addNewRitual{
+  text-align: center;
+  padding-right: 15%;
+
+}
+
+.selected {
+  color: whitesmoke;
+  margin-top: 15%;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+h3 {
+  font-size: 250%;
+  color: whitesmoke;
+  font-family: fantasy;
+  text-align: center;
+}
+
+#name {
+  color: whitesmoke;
+}
+
+#selected {
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: oblique;
+}
